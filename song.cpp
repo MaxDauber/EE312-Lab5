@@ -34,7 +34,7 @@ void song::setArtist(const string artist_name){
 }
 
 bool song::operator >(song const &rhs){
-
+ return true;
 }
 
 song::~song()=default;
