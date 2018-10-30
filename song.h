@@ -29,7 +29,7 @@ public:
     int getSize() const;
 
     bool operator >(song const &rhs);
-  //  bool operator ==(song const &rhs);
+    bool operator ==(song const &rhs);
 
 
     ~song();
