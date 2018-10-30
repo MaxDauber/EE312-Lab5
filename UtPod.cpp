@@ -82,6 +82,8 @@ int UtPod::removeSong(song const &s){
 
 
 void UtPod::shuffle(){
+    if(getNumSongs()==0){
+        return;}
     int numchanges=(rand()%1009);
     while(numchanges>0) {
         int change1 = (rand() % (getNumSongs()-1));

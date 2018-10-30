@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     cin>>sizeofpod;
     UtPod t(sizeofpod);
     t.help();
-    cout << " To terminate program type 'stop'";
+    cout << " To terminate program type 'stop'"<<endl;
     cout << "The multiple options you can do are:" << endl;
     cout << "add a song by writing 'addsong' " << endl;
     cout << "Show the song list write 'showsongs'" << endl;
@@ -36,12 +36,29 @@ int main(int argc, char *argv[])
     cout << "delete all songs write 'explode'"<<endl;
     cout <<"To ask for help again write 'help"<<endl;
     string action;
+    int result;
     while(action!="stop") {
+        cout<<"enter a command :";
         cin>>action;
+        string name;
+        string artist;
+        int sizeofsong;
         if(action=="addsong") {
-            string name;
-            string artist;
-            int sizeofsong;
+            cout << "enter title of song: ";
+            cin >> name;
+            cout << "\n enter name of the artise: ";
+            cin >> artist;
+            cout << "\n enter the size of the song (in MB): ";
+            cin >> sizeofsong;
+            song s(artist,name,sizeofsong);
+            result=t.addSong(s);
+            cout << "result = " << result << endl;
+
+        }
+        if(action=="showsongs"){
+            t.showSongList();
+        }
+        if(action=="rmsongs"){
             cout << "enter title of song: ";
             cin >> name;
             cout << "\n enter name of the artise: ";
@@ -49,12 +66,35 @@ int main(int argc, char *argv[])
             cout << "\n enter the size of the song (in MB): ";
             cin >> sizeofsong;
             song s(name,artist,sizeofsong);
-            t.addSong(s);
+            result=t.removeSong(s);
+            cout << "result = " << result << endl;
         }
-        t.showSongList();
-
-
-
+        if(action=="shuffle"){
+            t.shuffle();
+            t.showSongList();
+        }
+        if(action=="sort") {
+            t.sortSongList();
+            t.showSongList();
+        }
+        if(action=="totmem"){
+            result=t.getRemainingMemory();
+            cout << "result = " << result << endl;
+        }
+        if(action=="remmem"){
+            result=t.getRemainingMemory();
+            cout << "result = " << result << endl;
+        }
+        if(action=="explode"){
+            t.clearMemory();
+        }
+        if(action=="stop"){
+            t.clearMemory();
+        }
+        if(action=="help"){
+            t.help();
+        }
+            //cout<<"We cannot read your action please enter a new command or ask for help, by typing 'help'"<<endl;
 
 }
 
