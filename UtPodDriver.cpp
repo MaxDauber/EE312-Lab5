@@ -52,7 +52,6 @@ int main(int argc, char *argv[])
     t.showSongList();
     cout<<"\n \n \n";
     t.shuffle();
-    t.showSongList();
 
     song s6("Sicko Mode", "Travis Scott", 3);
     result = t.removeSong(s6);
@@ -71,9 +70,11 @@ int main(int argc, char *argv[])
     
     result = t.removeSong(s4);
     cout << "delete result = " << result << endl;
-
     result = t.removeSong(s2);
     cout << "delete result = " << result << endl;
+
+
+
 
     t.showSongList();
     

@@ -49,29 +49,38 @@ int UtPod::removeSong(song const &s){
         return NOT_FOUND;}
     SongNode *trail= nullptr;
     SongNode *p=songs;
-    if(p->next==nullptr){
+    if(p->s.getSong()==s.getSong()&&p->next== nullptr){
         delete(p);
-        return(SUCCESS);
+        songs= nullptr;
+        return (SUCCESS);
     }
     while(p->s.getSong()!=s.getSong() && p->next!= nullptr){
         trail=p;
         p=p->next;
     }
-    if(p->next == nullptr){
-        return (NOT_FOUND);
-    }
-    if(trail!= nullptr) {
+    if(trail!= nullptr && p->s.getSong()==s.getSong()) {
         trail->next = p->next;
         delete (p);
         return(SUCCESS);
     }
-    if(trail== nullptr && p->next!=nullptr){
+    if(trail== nullptr && p->next!=nullptr && p->s.getSong()==s.getSong()){
         songs=p->next;
         delete(p);
         return(SUCCESS);
     }
+/*
+    if(trail== nullptr && p->next==nullptr && p->s.getSong()==s.getSong()){
+        delete(p);
+        return(SUCCESS);
+    }
+*/
 
+    if(p->next == nullptr){
+        return (NOT_FOUND);
+    }
 };
+
+
 void UtPod::shuffle(){
     int numchanges=(rand()%1009);
     while(numchanges>0) {
@@ -138,5 +147,23 @@ int UtPod::getRemainingMemory(){
     }
     return (remSize);
 };
+/* FUNCTION - void clearMemory
+ * clears all the songs from memory
+
+   input parms -
+
+   output parms -
+*/
+void UtPod::clearMemory(){
+    SongNode * temp=songs;
+    SongNode *temp2= nullptr;
+    while(temp!= nullptr){
+        temp2=temp->next;
+        delete(temp);
+        temp=temp2;
+    }
+    songs= nullptr;
+}
+
 
 UtPod ::~UtPod()=default;
