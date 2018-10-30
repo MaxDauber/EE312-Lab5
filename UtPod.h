@@ -38,8 +38,9 @@ class UtPod
       int getRemainingMemory();
       int getNumSongs();
       void clearMemory();
+      void help();
 
-    ~UtPod();
+      ~UtPod();
 
 
     //operator < (&rhs);
