@@ -4,42 +4,42 @@
 using namespace std;
 
 
-song::song() {
+song::song() { //default constructor
 song_name = "";
 artist = "";
 size=0;
 }
 
-song::song(string const name, string const author, int memsz){
+song::song(string const name, string const author, int memsz){//constructor when names are properly passed in
     song_name=author;
     artist=name;
     size=memsz;
     }
-string song::getSong()const{
+string song::getSong()const{//returns the name of the song
     return song_name;
 }
 
-string song::getArtist ()const{
+string song::getArtist ()const{//returns the artist of the song
     return artist;
 }
 
-void song::setSize(int songsize){
+void song::setSize(int songsize){//changes the size of the song
     size=songsize;
 }
 
-int song::getSize()const{
+int song::getSize()const{//returns the size of the song
     return size;
 }
 
-void song::setSong(const string song){
+void song::setSong(const string song){//changes the name of the song
     song_name=song;
 }
 
-void song::setArtist(const string artist_name){
+void song::setArtist(const string artist_name){//changes the artist of the song
     artist=artist_name;
 }
 
-bool song::operator >(song const &rhs){
+bool song::operator >(song const &rhs){// operator allows for comparing of songs, to find the proper order to sort by
 	if(this->artist > rhs.artist){
 		return(true);
 	}
@@ -57,7 +57,7 @@ bool song::operator >(song const &rhs){
 			
 }
 
-bool song::operator ==(song const &rhs){
+bool song::operator ==(song const &rhs){// returns if songs are the same or not
 
 	return(this->song_name==rhs.song_name && this->artist==rhs.artist && this->size==rhs.size);
 }

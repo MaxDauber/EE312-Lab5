@@ -23,19 +23,20 @@ int main(int argc, char *argv[])
     int sizeofpod;
     cout<<"Please enter a desired size of memory for your utPod"<<endl;
     getline(cin,sizesong);
-    sizeofpod=atoi(sizesong.c_str());
+    sizeofpod=atoi(sizesong.c_str());//converts cin to an integer to construct pod
     UtPod t(sizeofpod);
     t.help();
     string action;
     int result;
-    while(action!="stop") {
-	error=true;
-        cout<<"enter a command :";
+    while(action!="stop") {//driver waits for the user command to stop, else will check for the user input to see if it matches anything
+	error=true;// if the command doesnt match a real command will print out error code at the end
+        cout<<"\nenter a command :";
         getline(cin,action);
+	cout<<endl;
         string name;
         string artist;
         int sizeofsong;
-        if(action=="addsong") {
+        if(action=="addsong") {// creates song with the user input then adds the song to  the pod
             cout << "enter title of song: ";
             getline (cin,name);
             cout << "enter name of the artise: ";
