@@ -40,10 +40,24 @@ void song::setArtist(const string artist_name){
 }
 
 bool song::operator >(song const &rhs){
-    return true;
-    
+	if(this->artist > rhs.artist){
+		return(true);
+	}
+	else if(this->artist == rhs.artist){
+		if(this->song_name > rhs.song_name){
+			return(true);
+		}
+	 	else if(this->song_name ==rhs.song_name){
+			if(this->size > rhs.size){
+				return(true);	
+			}	
+		}
+	}
+	return false;
+			
 }
 
 bool song::operator ==(song const &rhs){
-    return true;
+
+	return(this->song_name==rhs.song_name && this->artist==rhs.artist && this->size==rhs.size);
 }

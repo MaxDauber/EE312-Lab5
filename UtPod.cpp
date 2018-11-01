@@ -58,21 +58,21 @@ int UtPod::removeSong(song const &s){
         return NOT_FOUND;}
     SongNode *trail= NULL;
     SongNode *p=songs;
-    if(p->s.getSong()==s.getSong()&&p->next== NULL){
+    if(p->s==s&&p->next== NULL){
         delete(p);
         songs= NULL;
         return (SUCCESS);
     }
-    while(p->s.getSong()!=s.getSong() && p->next!= NULL){
+    while(!(p->s==s) && p->next!= NULL){
         trail=p;
         p=p->next;
     }
-    if(trail!= NULL && p->s.getSong()==s.getSong()) {
+    if(trail!= NULL && p->s==s) {
         trail->next = p->next;
         delete (p);
         return(SUCCESS);
     }
-    if(trail== NULL && p->next!=NULL && p->s.getSong()==s.getSong()){
+    if(trail== NULL && p->next!=NULL && p->s==s){
         songs=p->next;
         delete(p);
         return(SUCCESS);
@@ -93,13 +93,13 @@ int UtPod::removeSong(song const &s){
 void UtPod::shuffle(){
     if(getNumSongs()==0||getNumSongs()==1){
         return;}
-    int numchanges=getNumSongs();
+    int numchanges=getNumSongs()+2;
     while(numchanges>0) {
 	int change1=0;
 	int change2=0;
 	while(change1==change2){
-        change1 = (rand() % (getNumSongs()-1));
-        change2= (rand() %(getNumSongs()-1) );
+        change1 = (rand() % (getNumSongs()));
+        change2= (rand() %(getNumSongs()) );
 	}
         SongNode *temp1 = songs;
         SongNode *temp2 = songs;
@@ -118,12 +118,14 @@ void UtPod::shuffle(){
 };
 void UtPod::showSongList(){
     if(songs== NULL) {
+	cout <<"No Songs contained in this pod"<<endl;
         return;
     }
     SongNode *temp =songs;
     while(temp!= NULL) {
-        cout << "song is: " << temp->s.getSong()<< " artist is: "<< temp->s.getArtist() << " size is: " << temp->s.getSize() <<endl;
-	
+	cout << "The artist is: " << temp->s.getArtist();
+	cout << " The song is: " << temp->s.getSong();
+	cout << " The size is: " << temp->s.getSize() << endl;	
         temp=temp->next;
     }
 };
@@ -135,7 +137,7 @@ void UtPod::sortSongList(){ // use a bubble sort because it is the easiest
         for(int y=0; y<this->getNumSongs()-1;y++){
             temp2=temp;
             temp=temp->next;
-            if(temp->s.getArtist() < temp2->s.getArtist()){
+            if(temp2->s > temp->s){
                 song temp3;
                 temp3=temp->s;
                 temp->s=temp2->s;
@@ -181,7 +183,7 @@ void UtPod::clearMemory(){
     songs= NULL;
 }
 void UtPod::help() {
-    cout << " To terminate program type 'stop'";
+    cout << "To terminate program type 'stop'"<<endl;
     cout << "The multiple options you can do are:" << endl;
     cout << "add a song by writing 'addsong' " << endl;
     cout << "Show the song list write 'showsongs'" << endl;

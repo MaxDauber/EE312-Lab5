@@ -18,73 +18,94 @@ You will want to do more complete testing.
 using namespace std;
 
 int main(int argc, char *argv[])
-{
+{   string sizesong;
+    bool error=false;
     int sizeofpod;
     cout<<"Please enter a desired size of memory for your utPod"<<endl;
-    cin>>sizeofpod;
+    getline(cin,sizesong);
+    sizeofpod=atoi(sizesong.c_str());
     UtPod t(sizeofpod);
     t.help();
     string action;
     int result;
     while(action!="stop") {
+	error=true;
         cout<<"enter a command :";
-        cin>>action;
+        getline(cin,action);
         string name;
         string artist;
         int sizeofsong;
         if(action=="addsong") {
             cout << "enter title of song: ";
-            cin >> name;
-            cout << "\n enter name of the artise: ";
-            cin >> artist;
-            cout << "\n enter the size of the song (in MB): ";
-            cin >> sizeofsong;
+            getline (cin,name);
+            cout << "enter name of the artise: ";
+            getline(cin,artist);
+            cout << "enter the size of the song (in MB): ";
+	    getline(cin,sizesong);
+	    sizeofsong=atoi(sizesong.c_str());
+	    while(sizeofsong<1) {
+		cout<<"invalid size,try again"<<endl;
+		cout << " enter the size of the song (in MB): ";
+		getline(cin,sizesong);
+		sizeofsong=atoi(sizesong.c_str());
+		}
             song s(artist,name,sizeofsong);
             result=t.addSong(s);
             cout << "result = " << result << endl;
-
+	    error=false;
         }
         if(action=="showsongs"){
             t.showSongList();
+	    error=false;
         }
         if(action=="rmsong"){
             cout << "enter title of song: ";
-            cin >> name;
-            cout << "\n enter name of the artise: ";
-            cin >> artist;
-            cout << "\n enter the size of the song (in MB): ";
-            cin >> sizeofsong;
+            getline (cin,name);
+            cout << "enter name of the artise: ";
+            getline(cin,artist);
+            cout << "enter the size of the song (in MB): ";
+	    getline(cin,sizesong);
+	    sizeofsong=atoi(sizesong.c_str());	
             song s(artist,name,sizeofsong);
             result=t.removeSong(s);
             cout << "result = " << result << endl;
+	    error=false;
         }
         if(action=="shuffle"){
             t.shuffle();
             t.showSongList();
+ 	    error=false;
         }
         if(action=="sort") {
             t.sortSongList();
             t.showSongList();
+	    error=false;		
         }
         if(action=="totmem"){
-            result=t.getRemainingMemory();
+            result=t.getTotalMemory();
             cout << "result = " << result << endl;
+	    error=false;
         }
         if(action=="remmem"){
             result=t.getRemainingMemory();
             cout << "result = " << result << endl;
+ 	    error=false;
         }
         if(action=="explode"){
             t.clearMemory();
+	    error=false;
         }
         if(action=="stop"){
             t.clearMemory();
+	    error=false;
         }
         if(action=="help"){
             t.help();
+	    error=false;
         }
-            //cout<<"We cannot read your action please enter a new command or ask for help, by typing 'help'"<<endl;
-
+	if(error==true){
+            cout<<"We cannot read your action please enter a new command or ask for help, by typing 'help'"<<endl;
+		}
 }
 
 
