@@ -95,8 +95,8 @@ void UtPod::shuffle(){
         return;}
     int numchanges=getNumSongs();
     while(numchanges>0) {
-	int change1=0
-	int change2=0
+	int change1=0;
+	int change2=0;
 	while(change1==change2){
         change1 = (rand() % (getNumSongs()-1));
         change2= (rand() %(getNumSongs()-1) );
