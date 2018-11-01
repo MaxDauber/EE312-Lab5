@@ -13,7 +13,7 @@ private:
       int size;
 
 public:
-    song()= default;
+    song();
     song(string const name, string const author, int memsz);
 
     string getSong () const;
@@ -32,7 +32,7 @@ public:
     bool operator ==(song const &rhs);
 
 
-    ~song();
+   // ~song();
 };
 
 

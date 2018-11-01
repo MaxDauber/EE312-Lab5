@@ -4,6 +4,12 @@
 using namespace std;
 
 
+song::song() {
+song_name = "";
+artist = "";
+size=0;
+}
+
 song::song(string const name, string const author, int memsz){
     song_name=author;
     artist=name;
@@ -41,6 +47,3 @@ bool song::operator >(song const &rhs){
 bool song::operator ==(song const &rhs){
     return true;
 }
-
-
-song::~song()=default;

@@ -47,14 +47,14 @@ int main(int argc, char *argv[])
         if(action=="showsongs"){
             t.showSongList();
         }
-        if(action=="rmsongs"){
+        if(action=="rmsong"){
             cout << "enter title of song: ";
             cin >> name;
             cout << "\n enter name of the artise: ";
             cin >> artist;
             cout << "\n enter the size of the song (in MB): ";
             cin >> sizeofsong;
-            song s(name,artist,sizeofsong);
+            song s(artist,name,sizeofsong);
             result=t.removeSong(s);
             cout << "result = " << result << endl;
         }

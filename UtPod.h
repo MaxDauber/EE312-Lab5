@@ -27,7 +27,7 @@ class UtPod
       int numSongs;
    
    public:
-      UtPod()= default;
+      UtPod();
       UtPod(int size);
       int addSong(song const &s);
       int removeSong(song const &s);
