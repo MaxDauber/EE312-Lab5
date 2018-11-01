@@ -109,7 +109,7 @@ void UtPod::showSongList(){
     }
     SongNode *temp =songs;
     while(temp!= nullptr) {
-        cout << "song is: " << temp->s.getSong()<< " artist is: "<< temp->s.getArtist()<<endl;
+        cout << "song is: " << temp->s.getSong()<< " artist is: "<< temp->s.getArtist()<<"size is: " <<temp->s.getSize()<<endl;
         temp=temp->next;
     }
 };

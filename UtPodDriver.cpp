@@ -24,17 +24,6 @@ int main(int argc, char *argv[])
     cin>>sizeofpod;
     UtPod t(sizeofpod);
     t.help();
-    cout << " To terminate program type 'stop'"<<endl;
-    cout << "The multiple options you can do are:" << endl;
-    cout << "add a song by writing 'addsong' " << endl;
-    cout << "Show the song list write 'showsongs'" << endl;
-    cout << "remove a song type 'rmsong'"<<endl;
-    cout << "shuffle the songs type 'shuffle'"<<endl;
-    cout << "sort the songs type 'sort'"<<endl;
-    cout << "show the total memory write 'totmem"<<endl;
-    cout << "show rem memory write 'remmem"<<endl;
-    cout << "delete all songs write 'explode'"<<endl;
-    cout <<"To ask for help again write 'help"<<endl;
     string action;
     int result;
     while(action!="stop") {
