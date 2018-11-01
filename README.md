@@ -1,2 +1,1 @@
-# EE312-Lab5
-# UTPod
+# EE312-Lab5 (UTPod)
